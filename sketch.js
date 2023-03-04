@@ -71,10 +71,8 @@ function playScreen() {
 
   if (p1score == 11) {
     state = winScreen(width / 4, player1.col);
-    state = exits;
   } else if (p2score == 11) {
     state = winScreen(width - width / 4, player2.col);
-    state = exits;
   }
 }
 
@@ -86,15 +84,15 @@ function displayScores() {
 }
 
 function winScreen(x, col) {
-  textSize(55);
-  fill(col);
-  text("YOU WIN!", x, height / 2);
-  textSize(25);
-  fill("white");
-  text("Press ENTER to restart", x, height / 2 + 40);
+  return function () {
+    textSize(55);
+    fill(col);
+    text("YOU WIN!", x, height / 2);
+    textSize(25);
+    fill("white");
+    text("Press ENTER to restart", x, height / 2 + 40);
+  }
 }
-
-function exits() {}
 
 function ran(m, n) {
   return (random(1) > 0.5) ? m : n;
